@@ -1,20 +1,6 @@
-
-<p align="center">
-    <a href="https://travis-ci.org/best-flutter/another_transformer_page_view">
-        <img src="https://travis-ci.org/best-flutter/another_transformer_page_view.svg?branch=master" alt="Build Status" />
-    </a>
-    <a href="https://github.com/best-flutter/another_transformer_page_view/pulls">
-        <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen.svg" alt="PRs Welcome" />
-    </a>
-    <a href="https://pub.dartlang.org/packages/another_transformer_page_view">
-        <img src="https://img.shields.io/pub/v/another_transformer_page_view.svg" alt="pub package" />
-    </a>
-    
-</p>
-
 # another_transformer_page_view
 
-PageTransformer for flutter
+PageTransformer for flutter. Fork from [transformer_page_view](https://pub.dev/packages/transformer_page_view)
 
 
 ## Very simple to use
