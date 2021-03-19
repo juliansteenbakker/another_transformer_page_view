@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
           new Expanded(
             child: new Welcome(index),
           ),
-//          new RaisedButton(onPressed: () {
+//          new ElevatedButton(onPressed: () {
 //            this.setState(() {
 //              index++;
 //              if (index > 3) {

@@ -80,11 +80,10 @@ class Ext extends PageView {}
 
 class MyPageView extends StatelessWidget {
   final SliverChildListDelegate childrenDelegate;
+  final PageController controller = new PageController();
 
   MyPageView({List<Widget> children})
       : childrenDelegate = new SliverChildListDelegate(children);
-
-  PageController controller = new PageController();
 
   Widget build(BuildContext context) {
     return new Scrollable(
