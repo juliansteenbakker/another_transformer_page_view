@@ -1,0 +1,20 @@
+name: another_transformer_page_view
+description: PageTransformer for flutter
+version: 0.1.6
+author: JZoom <jzoom8112@gmail.com>
+homepage:  https://github.com/jzoom/another_transformer_page_view
+
+environment:
+  sdk: ">=2.0.0-dev.50.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+
+flutter:
