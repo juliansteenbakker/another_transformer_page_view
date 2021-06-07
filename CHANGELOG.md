@@ -1,3 +1,6 @@
+## 1.0.1
+Applied pedantic style
+
 ## 1.0.0
 Upgraded to null-safety
 
