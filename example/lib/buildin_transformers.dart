@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
-import 'dart:math' as Math;
+import 'dart:math' as math;
 
 import 'package:vector_math/vector_math_64.dart';
 
 class AccordionTransformer extends PageTransformer {
   @override
   Widget transform(Widget child, TransformInfo info) {
-    double position = info.position;
+    var position = info.position;
     if (position < 0.0) {
-      return new Transform.scale(
+      return Transform.scale(
         scale: 1 + position,
         alignment: Alignment.topRight,
         child: child,
       );
     } else {
-      return new Transform.scale(
+      return Transform.scale(
         scale: 1 - position,
         alignment: Alignment.bottomLeft,
         child: child,
@@ -27,18 +27,18 @@ class AccordionTransformer extends PageTransformer {
 class ThreeDTransformer extends PageTransformer {
   @override
   Widget transform(Widget child, TransformInfo info) {
-    double position = info.position;
-    double height = info.height;
-    double width = info.width;
-    double pivotX = 0.0;
+    var position = info.position;
+    var height = info.height;
+    var width = info.width;
+    var pivotX = 0.0;
     if (position < 0 && position >= -1) {
       // left scrolling
       pivotX = width;
     }
-    return new Transform(
-      transform: new Matrix4.identity()
-        ..rotate(new Vector3(0.0, 2.0, 0.0), position * 1.5),
-      origin: new Offset(pivotX, height / 2),
+    return Transform(
+      transform: Matrix4.identity()
+        ..rotate(Vector3(0.0, 2.0, 0.0), position * 1.5),
+      origin: Offset(pivotX, height / 2),
       child: child,
     );
   }
@@ -48,12 +48,12 @@ class ZoomInPageTransformer extends PageTransformer {
   static const double ZOOM_MAX = 0.5;
   @override
   Widget transform(Widget child, TransformInfo info) {
-    double position = info.position;
-    double width = info.width;
+    var position = info.position;
+    var width = info.width;
     if (position > 0 && position <= 1) {
-      return new Transform.translate(
-        offset: new Offset(-width * position, 0.0),
-        child: new Transform.scale(
+      return Transform.translate(
+        offset: Offset(-width * position, 0.0),
+        child: Transform.scale(
           scale: 1 - position,
           child: child,
         ),
@@ -69,9 +69,9 @@ class ZoomOutPageTransformer extends PageTransformer {
 
   @override
   Widget transform(Widget child, TransformInfo info) {
-    double position = info.position;
-    double pageWidth = info.width;
-    double pageHeight = info.height;
+    var position = info.position;
+    var pageWidth = info.width;
+    var pageHeight = info.height;
 
     if (position < -1) {
       // [-Infinity,-1)
@@ -81,9 +81,9 @@ class ZoomOutPageTransformer extends PageTransformer {
       // [-1,1]
       // Modify the default slide transition to
       // shrink the page as well
-      double scaleFactor = Math.max(MIN_SCALE, 1 - position.abs());
-      double vertMargin = pageHeight * (1 - scaleFactor) / 2;
-      double horzMargin = pageWidth * (1 - scaleFactor) / 2;
+      var scaleFactor = math.max(MIN_SCALE, 1 - position.abs());
+      var vertMargin = pageHeight * (1 - scaleFactor) / 2;
+      var horzMargin = pageWidth * (1 - scaleFactor) / 2;
       double dx;
       if (position < 0) {
         dx = (horzMargin - vertMargin / 2);
@@ -91,14 +91,14 @@ class ZoomOutPageTransformer extends PageTransformer {
         dx = (-horzMargin + vertMargin / 2);
       }
       // Scale the page down (between MIN_SCALE and 1)
-      double opacity = MIN_ALPHA +
+      var opacity = MIN_ALPHA +
           (scaleFactor - MIN_SCALE) / (1 - MIN_SCALE) * (1 - MIN_ALPHA);
 
-      return new Opacity(
+      return Opacity(
         opacity: opacity,
-        child: new Transform.translate(
-          offset: new Offset(dx, 0.0),
-          child: new Transform.scale(
+        child: Transform.translate(
+          offset: Offset(dx, 0.0),
+          child: Transform.scale(
             scale: scaleFactor,
             child: child,
           ),
@@ -119,28 +119,28 @@ class DeepthPageTransformer extends PageTransformer {
 
   @override
   Widget transform(Widget child, TransformInfo info) {
-    double position = info.position;
+    var position = info.position;
     if (position <= 0) {
-      return new Opacity(
+      return Opacity(
         opacity: 1.0,
-        child: new Transform.translate(
-          offset: new Offset(0.0, 0.0),
-          child: new Transform.scale(
+        child: Transform.translate(
+          offset: Offset(0.0, 0.0),
+          child: Transform.scale(
             scale: 1.0,
             child: child,
           ),
         ),
       );
     } else if (position <= 1) {
-      const double MIN_SCALE = 0.75;
+      const MIN_SCALE = 0.75;
       // Scale the page down (between MIN_SCALE and 1)
-      double scaleFactor = MIN_SCALE + (1 - MIN_SCALE) * (1 - position);
+      var scaleFactor = MIN_SCALE + (1 - MIN_SCALE) * (1 - position);
 
-      return new Opacity(
+      return Opacity(
         opacity: 1.0 - position,
-        child: new Transform.translate(
-          offset: new Offset(info.width * -position, 0.0),
-          child: new Transform.scale(
+        child: Transform.translate(
+          offset: Offset(info.width * -position, 0.0),
+          child: Transform.scale(
             scale: scaleFactor,
             child: child,
           ),
@@ -156,20 +156,20 @@ class ScaleAndFadeTransformer extends PageTransformer {
   final double _scale;
   final double _fade;
 
-  ScaleAndFadeTransformer({double fade: 0.3, double scale: 0.8})
+  ScaleAndFadeTransformer({double fade = 0.3, double scale = 0.8})
       : _fade = fade,
         _scale = scale;
 
   @override
   Widget transform(Widget item, TransformInfo info) {
-    double position = info.position;
-    double scaleFactor = (1 - position.abs()) * (1 - _scale);
-    double fadeFactor = (1 - position.abs()) * (1 - _fade);
-    double opacity = _fade + fadeFactor;
-    double scale = _scale + scaleFactor;
-    return new Opacity(
+    var position = info.position;
+    var scaleFactor = (1 - position.abs()) * (1 - _scale);
+    var fadeFactor = (1 - position.abs()) * (1 - _fade);
+    var opacity = _fade + fadeFactor;
+    var scale = _scale + scaleFactor;
+    return Opacity(
       opacity: opacity,
-      child: new Transform.scale(
+      child: Transform.scale(
         scale: scale,
         child: item,
       ),

@@ -7,25 +7,25 @@ import 'package:flutter/cupertino.dart';
 
 // 1111111 !!!!!!
 
-void main() => runApp(new MyApp());
+void main() => runApp(MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
 
 List<String> images = [
-  "assets/Hepburn2.jpg",
-  "assets/Hepburn5.jpg",
-  "assets/Hepburn4.jpg",
+  'assets/Hepburn2.jpg',
+  'assets/Hepburn5.jpg',
+  'assets/Hepburn4.jpg',
 ];
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -36,18 +36,18 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   IndexController _controller;
-  List<String> _types = [
-    "AccordionTransformer",
-    "ThreeDTransformer",
-    "ScaleAndFadeTransformer",
-    "ZoomInPageTransformer",
-    "ZoomOutPageTransformer",
-    "DeepthPageTransformer"
+  final List<String> _types = [
+    'AccordionTransformer',
+    'ThreeDTransformer',
+    'ScaleAndFadeTransformer',
+    'ZoomInPageTransformer',
+    'ZoomOutPageTransformer',
+    'DeepthPageTransformer'
   ];
 
   String _type;
@@ -57,70 +57,70 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    _controller = new IndexController();
-    _type = "AccordionTransformer";
-    controller = new FixedExtentScrollController();
+    _controller = IndexController();
+    _type = 'AccordionTransformer';
+    controller = FixedExtentScrollController();
     super.initState();
   }
 
   PageTransformer getTransformer() {
     switch (_type) {
       case 'AccordionTransformer':
-        return new AccordionTransformer();
+        return AccordionTransformer();
       case 'ThreeDTransformer':
-        return new ThreeDTransformer();
+        return ThreeDTransformer();
       case 'ScaleAndFadeTransformer':
-        return new ScaleAndFadeTransformer();
+        return ScaleAndFadeTransformer();
       case 'ZoomInPageTransformer':
-        return new ZoomInPageTransformer();
+        return ZoomInPageTransformer();
       case 'ZoomOutPageTransformer':
-        return new ZoomOutPageTransformer();
+        return ZoomOutPageTransformer();
       case 'DeepthPageTransformer':
-        return new DeepthPageTransformer();
+        return DeepthPageTransformer();
     }
 
-    throw new Exception("Not a type");
+    throw Exception('Not a type');
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
       ),
-      body: new Column(
+      body: Column(
         children: <Widget>[
-          new Row(
+          Row(
             children: <Widget>[
-              new ElevatedButton(
+              ElevatedButton(
                 onPressed: () {
                   _controller.previous();
                 },
-                child: new Text("Preious"),
+                child: Text('Preious'),
               ),
-              new SizedBox(
+              SizedBox(
                 width: 8.0,
               ),
-              new ElevatedButton(
+              ElevatedButton(
                 onPressed: () {
                   _controller.next();
                 },
-                child: new Text("Next"),
+                child: Text('Next'),
               ),
-              new SizedBox(
+              SizedBox(
                 width: 8.0,
               ),
-              new ElevatedButton(
+              ElevatedButton(
                 onPressed: () {
                   showModalBottomSheet(
                       context: context,
                       builder: (_) {
-                        return new CupertinoPicker(
+                        return CupertinoPicker(
                             scrollController: controller,
                             itemExtent: 30.0,
                             onSelectedItemChanged: (int index) {
                               setState(() {
-                                controller = new FixedExtentScrollController(
+                                controller = FixedExtentScrollController(
                                     initialItem: index);
                                 _type = _types[index];
                                 if (_type == 'ScaleAndFadeTransformer') {
@@ -130,22 +130,22 @@ class _MyHomePageState extends State<MyHomePage> {
                                 }
                               });
                             },
-                            children: _types.map((t) => new Text(t)).toList());
+                            children: _types.map((t) => Text(t)).toList());
                       });
                 },
-                child: new Text("Change Animation"),
+                child: Text('Change Animation'),
               ),
             ],
           ),
-          new Expanded(
-              child: new SizedBox(
-            child: new TransformerPageView(
+          Expanded(
+              child: SizedBox(
+            child: TransformerPageView(
                 loop: true,
                 viewportFraction: _viewportFraction,
                 controller: _controller,
                 transformer: getTransformer(),
                 itemBuilder: (BuildContext context, int index) {
-                  return new Image.asset(
+                  return Image.asset(
                     images[index],
                     fit: BoxFit.fill,
                   );

@@ -26,9 +26,10 @@ class MyViewPort extends RenderSliverFillViewport {
 
   @override
   void setupParentData(RenderObject child) {
-    if (child.parentData is! SliverMultiBoxAdaptorParentData)
-      child.parentData = new SliverMultiBoxAdaptorParentData()
+    if (child.parentData is! SliverMultiBoxAdaptorParentData) {
+      child.parentData = SliverMultiBoxAdaptorParentData()
         ..keepAlive = true;
+    }
   }
 }
 
@@ -56,7 +57,7 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
   @override
   RenderSliverFillViewport createRenderObject(BuildContext context) {
     final SliverMultiBoxAdaptorElement element = context;
-    return new MyViewPort(
+    return MyViewPort(
         childManager: element,
         itemCount: itemCount,
         viewportFraction: viewportFraction);
@@ -64,7 +65,7 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
 
   @override
   SliverMultiBoxAdaptorElement createElement() {
-    return new SliverMultiBoxAdaptorElement(this);
+    return SliverMultiBoxAdaptorElement(this);
   }
 
   @override
@@ -80,24 +81,25 @@ class Ext extends PageView {}
 
 class MyPageView extends StatelessWidget {
   final SliverChildListDelegate childrenDelegate;
-  final PageController controller = new PageController();
+  final PageController controller = PageController();
 
   MyPageView({List<Widget> children})
-      : childrenDelegate = new SliverChildListDelegate(children);
+      : childrenDelegate = SliverChildListDelegate(children);
 
+  @override
   Widget build(BuildContext context) {
-    return new Scrollable(
+    return Scrollable(
       axisDirection: AxisDirection.right,
       controller: controller,
       physics: _kPagePhysics,
       viewportBuilder: (BuildContext context, ViewportOffset position) {
         print(position);
-        return new Viewport(
+        return Viewport(
           cacheExtent: 300.0,
           axisDirection: AxisDirection.right,
           offset: position,
           slivers: <Widget>[
-            new MySliverFillViewport(
+            MySliverFillViewport(
                 viewportFraction: 1.0,
                 itemCount: 10,
                 delegate: childrenDelegate),

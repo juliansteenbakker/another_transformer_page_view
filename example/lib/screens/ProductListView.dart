@@ -6,18 +6,18 @@ import 'package:another_transformer_page_view/another_transformer_page_view.dart
 class ProductListView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return new ProductListViewState();
+    return ProductListViewState();
   }
 }
 
 class ProductListViewState extends State<ProductListView> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("ProductList"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ProductList'),
       ),
-      body: new ListView(
+      body: ListView(
         children: <Widget>[
 //          new SizedBox(
 //            height: 1000.0,
@@ -25,28 +25,28 @@ class ProductListViewState extends State<ProductListView> {
 //              color: Colors.greenAccent,
 //            ),
 //          ),
-          new SizedBox(
-            child: new TransformerPageView(
+          SizedBox(
+            height: 100.0,
+            child: TransformerPageView(
               viewportFraction: 0.8,
               itemCount: 10,
-              transformer: new PageTransformerBuilder(builder: (w, i) {
+              transformer: PageTransformerBuilder(builder: (w, i) {
                 return w;
               }),
               itemBuilder: (c, i) {
-                return new InkWell(
+                return InkWell(
                   onTap: () {
-                    Navigator.push(context, new MaterialPageRoute(builder: (c) {
-                      return new ProductDetailView();
+                    Navigator.push(context, MaterialPageRoute(builder: (c) {
+                      return ProductDetailView();
                     }));
                   },
-                  child: new Container(
-                    child: new Text("$i"),
+                  child: Container(
                     color: Colors.black26,
+                    child: Text('$i'),
                   ),
                 );
               },
             ),
-            height: 100.0,
           )
         ],
       ),

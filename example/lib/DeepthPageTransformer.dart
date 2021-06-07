@@ -7,25 +7,25 @@ import 'package:flutter/cupertino.dart';
 
 // 1111111 !!!!!!
 
-void main() => runApp(new MyApp());
+void main() => runApp(MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
 
 List<String> images = [
-  "assets/Hepburn2.jpg",
-  "assets/Hepburn5.jpg",
-  "assets/Hepburn4.jpg",
+  'assets/Hepburn2.jpg',
+  'assets/Hepburn5.jpg',
+  'assets/Hepburn4.jpg',
 ];
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -36,27 +36,27 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class TestWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Color> list = [
+    var list = <Color>[
       Colors.redAccent,
       Colors.blueAccent,
       Colors.greenAccent
     ];
-    return new TransformerPageView(
+    return TransformerPageView(
         loop: true,
-        transformer: new DeepthPageTransformer(),
+        transformer: DeepthPageTransformer(),
         itemBuilder: (BuildContext context, int index) {
-          return new Container(
+          return Container(
             color: list[index % list.length],
-            child: new Center(
-              child: new Text(
-                "$index",
-                style: new TextStyle(fontSize: 80.0, color: Colors.white),
+            child: Center(
+              child: Text(
+                '$index',
+                style: TextStyle(fontSize: 80.0, color: Colors.white),
               ),
             ),
           );
@@ -68,8 +68,8 @@ class TestWidget extends StatelessWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new TestWidget(),
+    return Scaffold(
+      body: TestWidget(),
     );
   }
 }

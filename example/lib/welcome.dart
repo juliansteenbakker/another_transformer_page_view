@@ -6,19 +6,19 @@ import 'package:flutter/cupertino.dart';
 
 // 1111111 !!!!!!
 
-void main() => runApp(new MyApp());
+void main() => runApp(MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -29,35 +29,35 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class Welcome extends StatelessWidget {
   final List<String> images = [
-    "assets/home.png",
-    "assets/good.png",
-    "assets/image.png",
-    "assets/edit.png"
+    'assets/home.png',
+    'assets/good.png',
+    'assets/image.png',
+    'assets/edit.png'
   ];
 
   final List<String> titles = [
-    "Welcome",
-    "Simple to use",
-    "Easy parallax",
-    "Customizable"
+    'Welcome',
+    'Simple to use',
+    'Easy parallax',
+    'Customizable'
   ];
   final List<String> subtitles = [
-    "Flutter TransformerPageView, for welcome screen, banner, image catalog and more",
-    "Simple api,easy to understand,powerful adn strong",
-    "Create parallax by a few lines of code",
-    "Highly customizable, the only boundary is our mind. :)"
+    'Flutter TransformerPageView, for welcome screen, banner, image catalog and more',
+    'Simple api,easy to understand,powerful adn strong',
+    'Create parallax by a few lines of code',
+    'Highly customizable, the only boundary is our mind. :)'
   ];
 
   final List<Color> backgroundColors = [
-    new Color(0xffF67904),
-    new Color(0xffD12D2E),
-    new Color(0xff7A1EA1),
-    new Color(0xff1773CF)
+    Color(0xffF67904),
+    Color(0xffD12D2E),
+    Color(0xff7A1EA1),
+    Color(0xff1773CF)
   ];
 
   final index;
@@ -66,42 +66,42 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new TransformerPageView(
+    return TransformerPageView(
         index: index,
         loop: false,
-        transformer: new PageTransformerBuilder(
+        transformer: PageTransformerBuilder(
             builder: (Widget child, TransformInfo info) {
           //  print('==========');
-          return new ParallaxColor(
+          return ParallaxColor(
             colors: backgroundColors,
             info: info,
-            child: new Column(
+            child: Column(
               children: <Widget>[
-                new Expanded(
-                    child: new ParallaxContainer(
-                  child: new Image.asset(images[info.index]),
+                Expanded(
+                    child: ParallaxContainer(
                   position: info.position,
                   opacityFactor: 1.0,
                   translationFactor: 400.0,
+                  child: Image.asset(images[info.index]),
                 )),
-                new ParallaxContainer(
-                  child: new Text(
-                    titles[info.index],
-                    style: new TextStyle(fontSize: 30.0, color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
+                ParallaxContainer(
                   position: info.position,
                   translationFactor: 100.0,
+                  child: Text(
+                    titles[info.index],
+                    style: TextStyle(fontSize: 30.0, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                new ParallaxContainer(
-                  child: new Padding(
-                      padding: new EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 50.0),
-                      child: new Text(subtitles[info.index],
-                          textAlign: TextAlign.center,
-                          style: new TextStyle(
-                              fontSize: 13.0, color: Colors.white))),
+                ParallaxContainer(
                   position: info.position,
                   translationFactor: 50.0,
+                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 50.0),
+                      child: Text(subtitles[info.index],
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 13.0, color: Colors.white))),
                 ),
               ],
             ),
@@ -116,11 +116,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Column(
+    return Scaffold(
+      body: Column(
         children: <Widget>[
-          new Expanded(
-            child: new Welcome(index),
+          Expanded(
+            child: Welcome(index),
           ),
 //          new ElevatedButton(onPressed: () {
 //            this.setState(() {
