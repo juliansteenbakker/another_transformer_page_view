@@ -43,8 +43,8 @@ class ImageTest extends StatelessWidget {
     return TransformerPageView(
         loop: true,
         viewportFraction: 0.8,
-        transformer: PageTransformerBuilder(
-            builder: (Widget child, TransformInfo info) {
+        transformer:
+            PageTransformerBuilder(builder: (Widget child, TransformInfo info) {
           return Padding(
             padding: EdgeInsets.all(10.0),
             child: Material(

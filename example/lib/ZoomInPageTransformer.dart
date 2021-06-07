@@ -5,7 +5,6 @@ import 'package:another_transformer_page_view/another_transformer_page_view.dart
 
 import 'package:flutter/cupertino.dart';
 
-
 void main() => runApp(MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
 
@@ -41,11 +40,7 @@ class MyHomePage extends StatefulWidget {
 class TestWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var list = <Color>[
-      Colors.redAccent,
-      Colors.blueAccent,
-      Colors.greenAccent
-    ];
+    var list = <Color>[Colors.redAccent, Colors.blueAccent, Colors.greenAccent];
     return TransformerPageView(
         loop: true,
         transformer: ZoomInPageTransformer(),

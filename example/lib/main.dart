@@ -114,8 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (b) {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (b) {
                     return Scaffold(
                       appBar: AppBar(
                         title: Text('images'),
@@ -128,8 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (b) {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (b) {
                     return Scaffold(
                         appBar: AppBar(
                           title: Text('welcome'),
@@ -141,8 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (b) {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (b) {
                     return Zero();
                   }));
                 },

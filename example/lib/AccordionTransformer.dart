@@ -42,11 +42,7 @@ class MyHomePage extends StatefulWidget {
 class TestWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var list = <Color>[
-      Colors.redAccent,
-      Colors.blueAccent,
-      Colors.greenAccent
-    ];
+    var list = <Color>[Colors.redAccent, Colors.blueAccent, Colors.greenAccent];
     return TransformerPageView(
         loop: true,
         transformer: AccordionTransformer(),

@@ -69,8 +69,8 @@ class Welcome extends StatelessWidget {
     return TransformerPageView(
         index: index,
         loop: false,
-        transformer: PageTransformerBuilder(
-            builder: (Widget child, TransformInfo info) {
+        transformer:
+            PageTransformerBuilder(builder: (Widget child, TransformInfo info) {
           //  print('==========');
           return ParallaxColor(
             colors: backgroundColors,
@@ -100,8 +100,8 @@ class Welcome extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 50.0),
                       child: Text(subtitles[info.index],
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 13.0, color: Colors.white))),
+                          style:
+                              TextStyle(fontSize: 13.0, color: Colors.white))),
                 ),
               ],
             ),

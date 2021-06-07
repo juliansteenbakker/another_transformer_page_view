@@ -27,8 +27,7 @@ class MyViewPort extends RenderSliverFillViewport {
   @override
   void setupParentData(RenderObject child) {
     if (child.parentData is! SliverMultiBoxAdaptorParentData) {
-      child.parentData = SliverMultiBoxAdaptorParentData()
-        ..keepAlive = true;
+      child.parentData = SliverMultiBoxAdaptorParentData()..keepAlive = true;
     }
   }
 }
