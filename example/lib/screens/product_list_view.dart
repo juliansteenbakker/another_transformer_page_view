@@ -1,9 +1,11 @@
-import 'package:example/screens/ProductDetailView.dart';
+import 'package:example/screens/product_detail_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 
 class ProductListView extends StatefulWidget {
+  const ProductListView({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return ProductListViewState();
@@ -15,16 +17,10 @@ class ProductListViewState extends State<ProductListView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ProductList'),
+        title: const Text('ProductList'),
       ),
       body: ListView(
         children: <Widget>[
-//          new SizedBox(
-//            height: 1000.0,
-//            child: new Container(
-//              color: Colors.greenAccent,
-//            ),
-//          ),
           SizedBox(
             height: 100.0,
             child: TransformerPageView(
@@ -37,7 +33,7 @@ class ProductListViewState extends State<ProductListView> {
                 return InkWell(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (c) {
-                      return ProductDetailView();
+                      return const ProductDetailView();
                     }));
                   },
                   child: Container(

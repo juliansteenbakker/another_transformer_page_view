@@ -5,7 +5,7 @@ import 'package:another_transformer_page_view/another_transformer_page_view.dart
 
 import 'package:flutter/cupertino.dart';
 
-// 1111111 !!!!!!
+
 
 void main() => runApp(MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
@@ -25,13 +25,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
@@ -40,6 +40,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class TestWidget extends StatelessWidget {
+  const TestWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var list = <Color>[Colors.redAccent, Colors.blueAccent, Colors.greenAccent];
@@ -52,7 +54,7 @@ class TestWidget extends StatelessWidget {
             child: Center(
               child: Text(
                 '$index',
-                style: TextStyle(fontSize: 80.0, color: Colors.white),
+                style: const TextStyle(fontSize: 80.0, color: Colors.white),
               ),
             ),
           );
@@ -64,7 +66,7 @@ class TestWidget extends StatelessWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: TestWidget(),
     );
   }

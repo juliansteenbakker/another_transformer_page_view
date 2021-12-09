@@ -5,9 +5,9 @@ import 'package:another_transformer_page_view/another_transformer_page_view.dart
 
 import 'package:flutter/cupertino.dart';
 
-// 1111111 !!!!!!
 
-void main() => runApp(MyApp());
+
+void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
 
 List<String> images = [
@@ -17,6 +17,8 @@ List<String> images = [
 ];
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -25,13 +27,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
@@ -76,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case 'ZoomOutPageTransformer':
         return ZoomOutPageTransformer();
       case 'DeepthPageTransformer':
-        return DeepthPageTransformer();
+        return DepthPageTransformer();
     }
 
     throw Exception('Not a type');
@@ -96,18 +98,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   _controller!.previous();
                 },
-                child: Text('Preious'),
+                child: const Text('Preious'),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8.0,
               ),
               ElevatedButton(
                 onPressed: () {
                   _controller!.next();
                 },
-                child: Text('Next'),
+                child: const Text('Next'),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8.0,
               ),
               ElevatedButton(
@@ -133,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: _types.map((t) => Text(t)).toList());
                       });
                 },
-                child: Text('Change Animation'),
+                child: const Text('Change Animation'),
               ),
             ],
           ),

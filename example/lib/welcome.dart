@@ -4,12 +4,14 @@ import 'package:another_transformer_page_view/another_transformer_page_view.dart
 
 import 'package:flutter/cupertino.dart';
 
-// 1111111 !!!!!!
 
-void main() => runApp(MyApp());
+
+void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,13 +20,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
@@ -54,15 +56,15 @@ class Welcome extends StatelessWidget {
   ];
 
   final List<Color> backgroundColors = [
-    Color(0xffF67904),
-    Color(0xffD12D2E),
-    Color(0xff7A1EA1),
-    Color(0xff1773CF)
+    const Color(0xffF67904),
+    const Color(0xffD12D2E),
+    const Color(0xff7A1EA1),
+    const Color(0xff1773CF)
   ];
 
-  final index;
+  final int index;
 
-  Welcome(this.index);
+  Welcome(this.index, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +91,7 @@ class Welcome extends StatelessWidget {
                   translationFactor: 100.0,
                   child: Text(
                     titles[info.index!],
-                    style: TextStyle(fontSize: 30.0, color: Colors.white),
+                    style: const TextStyle(fontSize: 30.0, color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -97,11 +99,11 @@ class Welcome extends StatelessWidget {
                   position: info.position!,
                   translationFactor: 50.0,
                   child: Padding(
-                      padding: EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 50.0),
+                      padding: const EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 50.0),
                       child: Text(subtitles[info.index!],
                           textAlign: TextAlign.center,
                           style:
-                              TextStyle(fontSize: 13.0, color: Colors.white))),
+                              const TextStyle(fontSize: 13.0, color: Colors.white))),
                 ),
               ],
             ),

@@ -1,6 +1,5 @@
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:meta/meta.dart';
 import 'dart:math';
 
 class MyViewPort extends RenderSliverFillViewport {
@@ -19,10 +18,6 @@ class MyViewPort extends RenderSliverFillViewport {
         itemCount! - 1);
   }
 
-  @override
-  int getMinChildIndexForScrollOffset(double scrollOffset, double itemExtent) {
-    return super.getMinChildIndexForScrollOffset(scrollOffset, itemExtent);
-  }
 
   @override
   void setupParentData(RenderObject child) {
@@ -40,8 +35,7 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
       required SliverChildDelegate delegate,
       this.viewportFraction = 1.0,
       this.itemCount})
-      : assert(viewportFraction != null),
-        assert(viewportFraction > 0.0),
+      : assert(viewportFraction > 0.0),
         super(key: key, delegate: delegate);
 
   /// The fraction of the viewport that each child should fill in the main axis.
@@ -76,14 +70,16 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
 
 const PageScrollPhysics _kPagePhysics = PageScrollPhysics();
 
-class Ext extends PageView {}
+class Ext extends PageView {
+  Ext({Key? key}) : super(key: key);
+}
 
 class MyPageView extends StatelessWidget {
   final SliverChildListDelegate childrenDelegate;
   final PageController controller = PageController();
 
-  MyPageView({required List<Widget> children})
-      : childrenDelegate = SliverChildListDelegate(children);
+  MyPageView({Key? key, required List<Widget> children})
+      : childrenDelegate = SliverChildListDelegate(children), super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +88,7 @@ class MyPageView extends StatelessWidget {
       controller: controller,
       physics: _kPagePhysics,
       viewportBuilder: (BuildContext context, ViewportOffset position) {
-        print(position);
+        debugPrint(position.toString());
         return Viewport(
           cacheExtent: 300.0,
           axisDirection: AxisDirection.right,
