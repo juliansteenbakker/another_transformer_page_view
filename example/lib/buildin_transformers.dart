@@ -91,8 +91,8 @@ class ZoomOutPageTransformer extends PageTransformer {
         dx = (-horzMargin + vertMargin / 2);
       }
       // Scale the page down (between MIN_SCALE and 1)
-      var opacity = minAlpha +
-          (scaleFactor - minScale) / (1 - minScale) * (1 - minAlpha);
+      var opacity =
+          minAlpha + (scaleFactor - minScale) / (1 - minScale) * (1 - minAlpha);
 
       return Opacity(
         opacity: opacity,

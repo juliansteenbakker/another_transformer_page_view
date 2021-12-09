@@ -18,7 +18,6 @@ class MyViewPort extends RenderSliverFillViewport {
         itemCount! - 1);
   }
 
-
   @override
   void setupParentData(RenderObject child) {
     if (child.parentData is! SliverMultiBoxAdaptorParentData) {
@@ -49,7 +48,8 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
 
   @override
   RenderSliverFillViewport createRenderObject(BuildContext context) {
-    final SliverMultiBoxAdaptorElement element = context as SliverMultiBoxAdaptorElement;
+    final SliverMultiBoxAdaptorElement element =
+        context as SliverMultiBoxAdaptorElement;
     return MyViewPort(
         childManager: element,
         itemCount: itemCount,
@@ -79,7 +79,8 @@ class MyPageView extends StatelessWidget {
   final PageController controller = PageController();
 
   MyPageView({Key? key, required List<Widget> children})
-      : childrenDelegate = SliverChildListDelegate(children), super(key: key);
+      : childrenDelegate = SliverChildListDelegate(children),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {

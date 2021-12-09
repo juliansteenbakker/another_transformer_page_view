@@ -10,7 +10,6 @@ import 'package:another_transformer_page_view/another_transformer_page_view.dart
 import 'package:flutter/cupertino.dart';
 import 'dart:math' as math;
 
-
 void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
 

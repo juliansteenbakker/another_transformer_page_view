@@ -87,7 +87,8 @@ class ParallaxColor extends StatefulWidget {
 
   final TransformInfo info;
 
-  const ParallaxColor({Key? key,
+  const ParallaxColor({
+    Key? key,
     required this.colors,
     required this.info,
     required this.child,
@@ -106,10 +107,12 @@ class ParallaxContainer extends StatelessWidget {
   final double opacityFactor;
 
   const ParallaxContainer(
-      {Key? key, required this.child,
+      {Key? key,
+      required this.child,
       required this.position,
       this.translationFactor = 100.0,
-      this.opacityFactor = 1.0}) : super(key: key);
+      this.opacityFactor = 1.0})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +137,8 @@ class ParallaxImage extends StatelessWidget {
             alignment: FractionalOffset(
               0.5 + position * imageFactor,
               0.5,
-            )), super(key: key);
+            )),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
