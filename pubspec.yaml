@@ -1,6 +1,6 @@
 name: another_transformer_page_view
 description: Yet another pageTransformer for flutter with null-safety support
-version: 1.0.2
+version: 1.1.0
 repository: https://github.com/juliansteenbakker/another_transformer_page_view
 
 environment:

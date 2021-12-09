@@ -1,3 +1,8 @@
+## 1.1.0
+- Upgraded example app to null-safety
+- Upgraded deprecated pedantic to flutter_lints
+- Upgraded android example app to latest compile versions and dependencies
+
 ## 1.0.1
 Applied pedantic style
 
