@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 
-
 import 'dart:math' as math;
 
 void main() => runApp(const MyApp());
