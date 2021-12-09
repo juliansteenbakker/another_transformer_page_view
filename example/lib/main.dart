@@ -35,16 +35,16 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  IndexController _controller;
+  IndexController? _controller;
   final List<String> _types = [
     'AccordionTransformer',
     'ThreeDTransformer',
@@ -54,9 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
     'DeepthPageTransformer'
   ];
 
-  String _type;
-  FixedExtentScrollController controller;
-  int _index = 0;
+  String? _type;
+  FixedExtentScrollController? controller;
+  int? _index = 0;
   double _viewportFraction = 1.0;
 
   @override
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
         actions: <Widget>[
           InkWell(
             onTap: () {
@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               ElevatedButton(
                 onPressed: () {
-                  _controller.move(math.Random().nextInt(5));
+                  _controller!.move(math.Random().nextInt(5));
                 },
                 child: Text('Random'),
               ),
@@ -151,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               ElevatedButton(
                 onPressed: () {
-                  _controller.previous();
+                  _controller!.previous();
                 },
                 child: Text('Preious'),
               ),
@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  _controller.next();
+                  _controller!.next();
                 },
                 child: Text('Next'),
               ),
@@ -202,7 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 viewportFraction: _viewportFraction,
                 controller: _controller,
                 transformer: getTransformer(),
-                onPageChanged: (int index) {
+                onPageChanged: (int? index) {
                   setState(() {
                     _index = index;
                   });

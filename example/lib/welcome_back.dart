@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -79,26 +79,26 @@ class Welcome extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                     child: ParallaxContainer(
-                  position: info.position,
+                  position: info.position!,
                   opacityFactor: 1.0,
                   translationFactor: 400.0,
-                  child: Image.asset(images[info.index]),
+                  child: Image.asset(images[info.index!]),
                 )),
                 ParallaxContainer(
-                  position: info.position,
+                  position: info.position!,
                   translationFactor: 100.0,
                   child: Text(
-                    titles[info.index],
+                    titles[info.index!],
                     style: TextStyle(fontSize: 30.0, color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
                 ),
                 ParallaxContainer(
-                  position: info.position,
+                  position: info.position!,
                   translationFactor: 50.0,
                   child: Padding(
                       padding: EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 50.0),
-                      child: Text(subtitles[info.index],
+                      child: Text(subtitles[info.index!],
                           textAlign: TextAlign.center,
                           style:
                               TextStyle(fontSize: 13.0, color: Colors.white))),

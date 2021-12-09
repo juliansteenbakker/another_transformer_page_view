@@ -4,10 +4,10 @@ import 'package:meta/meta.dart';
 import 'dart:math';
 
 class MyViewPort extends RenderSliverFillViewport {
-  int itemCount;
+  int? itemCount;
 
   MyViewPort(
-      {@required RenderSliverBoxChildManager childManager,
+      {required RenderSliverBoxChildManager childManager,
       double viewportFraction = 1.0,
       this.itemCount})
       : super(childManager: childManager, viewportFraction: viewportFraction);
@@ -16,7 +16,7 @@ class MyViewPort extends RenderSliverFillViewport {
   int getMaxChildIndexForScrollOffset(double scrollOffset, double itemExtent) {
     return min(
         super.getMaxChildIndexForScrollOffset(scrollOffset, itemExtent) + 2,
-        itemCount - 1);
+        itemCount! - 1);
   }
 
   @override
@@ -36,8 +36,8 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
   /// Creates a sliver whose box children that each fill the viewport.
   //
   const MySliverFillViewport(
-      {Key key,
-      @required SliverChildDelegate delegate,
+      {Key? key,
+      required SliverChildDelegate delegate,
       this.viewportFraction = 1.0,
       this.itemCount})
       : assert(viewportFraction != null),
@@ -51,11 +51,11 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
   /// the viewport in the main axis.
   final double viewportFraction;
 
-  final int itemCount;
+  final int? itemCount;
 
   @override
   RenderSliverFillViewport createRenderObject(BuildContext context) {
-    final SliverMultiBoxAdaptorElement element = context;
+    final SliverMultiBoxAdaptorElement element = context as SliverMultiBoxAdaptorElement;
     return MyViewPort(
         childManager: element,
         itemCount: itemCount,
@@ -82,7 +82,7 @@ class MyPageView extends StatelessWidget {
   final SliverChildListDelegate childrenDelegate;
   final PageController controller = PageController();
 
-  MyPageView({List<Widget> children})
+  MyPageView({required List<Widget> children})
       : childrenDelegate = SliverChildListDelegate(children);
 
   @override

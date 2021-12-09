@@ -7,7 +7,7 @@ import 'package:vector_math/vector_math_64.dart';
 class AccordionTransformer extends PageTransformer {
   @override
   Widget transform(Widget child, TransformInfo info) {
-    var position = info.position;
+    var position = info.position!;
     if (position < 0.0) {
       return Transform.scale(
         scale: 1 + position,
@@ -27,10 +27,10 @@ class AccordionTransformer extends PageTransformer {
 class ThreeDTransformer extends PageTransformer {
   @override
   Widget transform(Widget child, TransformInfo info) {
-    var position = info.position;
-    var height = info.height;
+    var position = info.position!;
+    var height = info.height!;
     var width = info.width;
-    var pivotX = 0.0;
+    double? pivotX = 0.0;
     if (position < 0 && position >= -1) {
       // left scrolling
       pivotX = width;
@@ -38,7 +38,7 @@ class ThreeDTransformer extends PageTransformer {
     return Transform(
       transform: Matrix4.identity()
         ..rotate(Vector3(0.0, 2.0, 0.0), position * 1.5),
-      origin: Offset(pivotX, height / 2),
+      origin: Offset(pivotX!, height / 2),
       child: child,
     );
   }
@@ -48,11 +48,11 @@ class ZoomInPageTransformer extends PageTransformer {
   static const double ZOOM_MAX = 0.5;
   @override
   Widget transform(Widget child, TransformInfo info) {
-    var position = info.position;
+    var position = info.position!;
     var width = info.width;
     if (position > 0 && position <= 1) {
       return Transform.translate(
-        offset: Offset(-width * position, 0.0),
+        offset: Offset(-width! * position, 0.0),
         child: Transform.scale(
           scale: 1 - position,
           child: child,
@@ -69,7 +69,7 @@ class ZoomOutPageTransformer extends PageTransformer {
 
   @override
   Widget transform(Widget child, TransformInfo info) {
-    var position = info.position;
+    var position = info.position!;
     var pageWidth = info.width;
     var pageHeight = info.height;
 
@@ -82,8 +82,8 @@ class ZoomOutPageTransformer extends PageTransformer {
       // Modify the default slide transition to
       // shrink the page as well
       var scaleFactor = math.max(MIN_SCALE, 1 - position.abs());
-      var vertMargin = pageHeight * (1 - scaleFactor) / 2;
-      var horzMargin = pageWidth * (1 - scaleFactor) / 2;
+      var vertMargin = pageHeight! * (1 - scaleFactor) / 2;
+      var horzMargin = pageWidth! * (1 - scaleFactor) / 2;
       double dx;
       if (position < 0) {
         dx = (horzMargin - vertMargin / 2);
@@ -119,7 +119,7 @@ class DeepthPageTransformer extends PageTransformer {
 
   @override
   Widget transform(Widget child, TransformInfo info) {
-    var position = info.position;
+    var position = info.position!;
     if (position <= 0) {
       return Opacity(
         opacity: 1.0,
@@ -139,7 +139,7 @@ class DeepthPageTransformer extends PageTransformer {
       return Opacity(
         opacity: 1.0 - position,
         child: Transform.translate(
-          offset: Offset(info.width * -position, 0.0),
+          offset: Offset(info.width! * -position, 0.0),
           child: Transform.scale(
             scale: scaleFactor,
             child: child,
@@ -162,7 +162,7 @@ class ScaleAndFadeTransformer extends PageTransformer {
 
   @override
   Widget transform(Widget item, TransformInfo info) {
-    var position = info.position;
+    var position = info.position!;
     var scaleFactor = (1 - position.abs()) * (1 - _scale);
     var fadeFactor = (1 - position.abs()) * (1 - _fade);
     var opacity = _fade + fadeFactor;

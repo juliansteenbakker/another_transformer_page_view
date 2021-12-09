@@ -31,16 +31,16 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  IndexController _controller;
+  IndexController? _controller;
   final List<String> _types = [
     'AccordionTransformer',
     'ThreeDTransformer',
@@ -50,8 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
     'DeepthPageTransformer'
   ];
 
-  String _type;
-  FixedExtentScrollController controller;
+  String? _type;
+  FixedExtentScrollController? controller;
 
   double _viewportFraction = 1.0;
 
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Column(
         children: <Widget>[
@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               ElevatedButton(
                 onPressed: () {
-                  _controller.previous();
+                  _controller!.previous();
                 },
                 child: Text('Preious'),
               ),
@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  _controller.next();
+                  _controller!.next();
                 },
                 child: Text('Next'),
               ),
