@@ -1,4 +1,3 @@
-import 'package:another_transformer_page_view/src/index_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -10,7 +9,7 @@ void main() {
     await tester.pumpWidget(MaterialApp(
         home: TransformerPageView(
             itemBuilder: (context, index) {
-              return Text('0');
+              return const Text('0');
             },
             itemCount: 10)));
 
@@ -22,9 +21,7 @@ void main() {
         home: TransformerPageView(
             transformer: PageTransformerBuilder(
                 builder: (Widget child, TransformInfo info) {
-              return Container(
-                child: Text('0'),
-              );
+              return const Text('0');
             }),
             itemCount: 0)));
 
@@ -37,9 +34,7 @@ void main() {
         home: TransformerPageView(
             transformer: PageTransformerBuilder(
                 builder: (Widget child, TransformInfo info) {
-              return Container(
-                child: Text('0'),
-              );
+              return const Text('0');
             }),
             itemCount: 10)));
 
@@ -133,7 +128,7 @@ void main() {
             controller: controller,
             transformer: FackTransformer(),
             itemBuilder: (context, index) {
-              print('===================build:$index');
+              debugPrint('===================build:$index');
               return Text('$index');
             },
             itemCount: 10)));

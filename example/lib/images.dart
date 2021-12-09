@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 
-import 'package:flutter/cupertino.dart';
-
-// 1111111 !!!!!!
-
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,15 +16,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -38,6 +36,8 @@ List<String> text0 = ['春归何处。寂寞无行路', '春无踪迹谁知。�
 List<String> text1 = ['若有人知春去处。唤取归来同住', '百啭无人能解，因风飞过蔷薇', '可怜一曲并船笛，说尽故人离别情。'];
 
 class ImageTest extends StatelessWidget {
+  const ImageTest({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return TransformerPageView(
@@ -46,26 +46,26 @@ class ImageTest extends StatelessWidget {
         transformer:
             PageTransformerBuilder(builder: (Widget child, TransformInfo info) {
           return Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Material(
               elevation: 4.0,
-              textStyle: TextStyle(color: Colors.white),
+              textStyle: const TextStyle(color: Colors.white),
               borderRadius: BorderRadius.circular(10.0),
               child: Stack(
                 fit: StackFit.expand,
                 children: <Widget>[
                   ParallaxImage.asset(
-                    images[info.index],
-                    position: info.position,
+                    images[info.index!],
+                    position: info.position!,
                   ),
-                  DecoratedBox(
+                  const DecoratedBox(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: FractionalOffset.bottomCenter,
                         end: FractionalOffset.topCenter,
                         colors: [
-                          const Color(0xFF000000),
-                          const Color(0x33FFC0CB),
+                          Color(0xFF000000),
+                          Color(0x33FFC0CB),
                         ],
                       ),
                     ),
@@ -79,21 +79,21 @@ class ImageTest extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         ParallaxContainer(
-                          position: info.position,
+                          position: info.position!,
                           translationFactor: 300.0,
                           child: Text(
-                            text0[info.index],
-                            style: TextStyle(fontSize: 15.0),
+                            text0[info.index!],
+                            style: const TextStyle(fontSize: 15.0),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8.0,
                         ),
                         ParallaxContainer(
-                          position: info.position,
+                          position: info.position!,
                           translationFactor: 200.0,
-                          child: Text(text1[info.index],
-                              style: TextStyle(fontSize: 18.0)),
+                          child: Text(text1[info.index!],
+                              style: const TextStyle(fontSize: 18.0)),
                         ),
                       ],
                     ),
@@ -110,7 +110,7 @@ class ImageTest extends StatelessWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Padding(
           padding: EdgeInsets.fromLTRB(10.0, 40.0, 10.0, 30.0),
           child: ImageTest()),

@@ -16,4 +16,3 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   flutter_lints: ^1.0.4
-
