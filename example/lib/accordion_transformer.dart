@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 
 
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
 
 List<String> images = [
@@ -17,6 +17,8 @@ List<String> images = [
 ];
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

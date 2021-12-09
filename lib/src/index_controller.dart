@@ -4,9 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 class IndexController extends ChangeNotifier {
-  static const int NEXT = 1;
-  static const int PREVIOUS = -1;
-  static const int MOVE = 0;
+  static const int nextEvent = 1;
+  static const int previousEvent = -1;
+  static const int moveEvent = 0;
 
   late Completer _completer;
 
@@ -17,14 +17,14 @@ class IndexController extends ChangeNotifier {
   Future move(int index, {bool animation = true}) {
     this.animation = animation;
     this.index = index;
-    event = MOVE;
+    event = moveEvent;
     _completer = Completer();
     notifyListeners();
     return _completer.future;
   }
 
   Future next({bool animation = true}) {
-    event = NEXT;
+    event = nextEvent;
     this.animation = animation;
     _completer = Completer();
     notifyListeners();
@@ -32,7 +32,7 @@ class IndexController extends ChangeNotifier {
   }
 
   Future previous({bool animation = true}) {
-    event = PREVIOUS;
+    event = previousEvent;
     this.animation = animation;
     _completer = Completer();
     notifyListeners();

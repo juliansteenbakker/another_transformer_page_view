@@ -250,7 +250,7 @@ class TransformerPageView extends StatefulWidget {
   ///
   /// [itemBuilder] will be called only with indices greater than or equal to
   /// zero and less than [itemCount].
-  TransformerPageView({
+  const TransformerPageView({
     Key? key,
     this.index,
     Duration? duration,
@@ -268,7 +268,7 @@ class TransformerPageView extends StatefulWidget {
     required this.itemCount,
   })  : assert(itemCount == 0 || itemBuilder != null || transformer != null),
         duration =
-            duration ?? Duration(milliseconds: kDefaultTransactionDuration),
+            duration ?? const Duration(milliseconds: kDefaultTransactionDuration),
         super(key: key);
 
   factory TransformerPageView.children(
@@ -574,16 +574,16 @@ class _TransformerPageViewState extends State<TransformerPageView> {
     var event = widget.controller!.event;
     int? index;
     switch (event) {
-      case IndexController.MOVE:
+      case IndexController.moveEvent:
         {
           index = _pageController!
               .getRealIndexFromRenderIndex(widget.controller!.index);
         }
         break;
-      case IndexController.PREVIOUS:
-      case IndexController.NEXT:
+      case IndexController.previousEvent:
+      case IndexController.nextEvent:
         {
-          index = _calcNextIndex(event == IndexController.NEXT);
+          index = _calcNextIndex(event == IndexController.nextEvent);
         }
         break;
       default:
