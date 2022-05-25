@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
+import 'package:flutter/material.dart';
 
 class Zero extends StatelessWidget {
   const Zero({Key? key}) : super(key: key);
@@ -15,6 +15,6 @@ class Zero extends StatelessWidget {
           itemBuilder: (c, i) {
             return Text('$i');
           },
-        ));
+        ),);
   }
 }

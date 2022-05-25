@@ -1,3 +1,6 @@
+import 'dart:math' as math;
+
+import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:example/buildin_transformers.dart';
 import 'package:example/images.dart';
 import 'package:example/screens/product_list_view.dart';
@@ -5,10 +8,6 @@ import 'package:example/welcome.dart';
 import 'package:example/zero.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:another_transformer_page_view/another_transformer_page_view.dart';
-
-import 'dart:math' as math;
 
 void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
@@ -97,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (c) {
                 return const ProductListView();
-              }));
+              },),);
             },
             child: const Text('route'),
           )
@@ -122,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       body: const ImageTest(),
                     );
-                  }));
+                  },),);
                 },
                 child: const Text('Image'),
               ),
@@ -133,8 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         appBar: AppBar(
                           title: const Text('welcome'),
                         ),
-                        body: Welcome(0));
-                  }));
+                        body: Welcome(0),);
+                  },),);
                 },
                 child: const Text('Welcome'),
               ),
@@ -142,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (b) {
                     return const Zero();
-                  }));
+                  },),);
                 },
                 child: const Text('Zero'),
               ),
@@ -179,7 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             onSelectedItemChanged: (int index) {
                               setState(() {
                                 controller = FixedExtentScrollController(
-                                    initialItem: index);
+                                    initialItem: index,);
                                 _type = _types[index];
                                 if (_type == 'ScaleAndFadeTransformer') {
                                   _viewportFraction = 0.8;
@@ -188,8 +187,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 }
                               });
                             },
-                            children: _types.map((t) => Text(t)).toList());
-                      });
+                            children: _types.map((t) => Text(t)).toList(),);
+                      },);
                 },
                 child: const Text('Animation'),
               ),
@@ -198,7 +197,6 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(
               child: SizedBox(
             child: TransformerPageView(
-                loop: false,
                 index: _index,
                 viewportFraction: _viewportFraction,
                 controller: _controller,
@@ -214,8 +212,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     fit: BoxFit.fill,
                   );
                 },
-                itemCount: 3),
-          ))
+                itemCount: 3,),
+          ),)
         ],
       ),
     );

@@ -1,7 +1,6 @@
+import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:example/buildin_transformers.dart';
 import 'package:flutter/material.dart';
-
-import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 
 void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
@@ -42,7 +41,7 @@ class TestWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var list = <Color>[Colors.redAccent, Colors.blueAccent, Colors.greenAccent];
+    final list = <Color>[Colors.redAccent, Colors.blueAccent, Colors.greenAccent];
     return TransformerPageView(
         loop: true,
         transformer: ZoomInPageTransformer(),
@@ -57,7 +56,7 @@ class TestWidget extends StatelessWidget {
             ),
           );
         },
-        itemCount: 3);
+        itemCount: 3,);
   }
 }
 

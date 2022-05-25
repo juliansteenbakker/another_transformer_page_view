@@ -1,8 +1,7 @@
+import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:example/buildin_transformers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 
 void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
@@ -120,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             onSelectedItemChanged: (int index) {
                               setState(() {
                                 controller = FixedExtentScrollController(
-                                    initialItem: index);
+                                    initialItem: index,);
                                 _type = _types[index];
                                 if (_type == 'ScaleAndFadeTransformer') {
                                   _viewportFraction = 0.8;
@@ -129,8 +128,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 }
                               });
                             },
-                            children: _types.map((t) => Text(t)).toList());
-                      });
+                            children: _types.map((t) => Text(t)).toList(),);
+                      },);
                 },
                 child: const Text('Change Animation'),
               ),
@@ -149,8 +148,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     fit: BoxFit.fill,
                   );
                 },
-                itemCount: 3),
-          ))
+                itemCount: 3,),
+          ),)
         ],
       ),
     );

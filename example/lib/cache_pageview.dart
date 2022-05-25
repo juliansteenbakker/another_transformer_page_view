@@ -1,6 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'dart:math';
 
 class MyViewPort extends RenderSliverFillViewport {
   int? itemCount;
@@ -8,14 +9,14 @@ class MyViewPort extends RenderSliverFillViewport {
   MyViewPort(
       {required RenderSliverBoxChildManager childManager,
       double viewportFraction = 1.0,
-      this.itemCount})
+      this.itemCount,})
       : super(childManager: childManager, viewportFraction: viewportFraction);
 
   @override
   int getMaxChildIndexForScrollOffset(double scrollOffset, double itemExtent) {
     return min(
         super.getMaxChildIndexForScrollOffset(scrollOffset, itemExtent) + 2,
-        itemCount! - 1);
+        itemCount! - 1,);
   }
 
   @override
@@ -33,7 +34,7 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
       {Key? key,
       required SliverChildDelegate delegate,
       this.viewportFraction = 1.0,
-      this.itemCount})
+      this.itemCount,})
       : assert(viewportFraction > 0.0),
         super(key: key, delegate: delegate);
 
@@ -53,7 +54,7 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
     return MyViewPort(
         childManager: element,
         itemCount: itemCount,
-        viewportFraction: viewportFraction);
+        viewportFraction: viewportFraction,);
   }
 
   @override
@@ -63,7 +64,7 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
 
   @override
   void updateRenderObject(
-      BuildContext context, RenderSliverFillViewport renderObject) {
+      BuildContext context, RenderSliverFillViewport renderObject,) {
     renderObject.viewportFraction = viewportFraction;
   }
 }
@@ -96,9 +97,8 @@ class MyPageView extends StatelessWidget {
           offset: position,
           slivers: <Widget>[
             MySliverFillViewport(
-                viewportFraction: 1.0,
                 itemCount: 10,
-                delegate: childrenDelegate),
+                delegate: childrenDelegate,),
           ],
         );
       },

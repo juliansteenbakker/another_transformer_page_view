@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
@@ -93,7 +92,7 @@ class ImageTest extends StatelessWidget {
                           position: info.position!,
                           translationFactor: 200.0,
                           child: Text(text1[info.index!],
-                              style: const TextStyle(fontSize: 18.0)),
+                              style: const TextStyle(fontSize: 18.0),),
                         ),
                       ],
                     ),
@@ -102,8 +101,8 @@ class ImageTest extends StatelessWidget {
               ),
             ),
           );
-        }),
-        itemCount: 3);
+        },),
+        itemCount: 3,);
   }
 }
 
@@ -113,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return const Scaffold(
       body: Padding(
           padding: EdgeInsets.fromLTRB(10.0, 40.0, 10.0, 30.0),
-          child: ImageTest()),
+          child: ImageTest(),),
     );
   }
 }

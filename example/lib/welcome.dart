@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
@@ -66,7 +65,6 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     return TransformerPageView(
         index: index,
-        loop: false,
         transformer:
             PageTransformerBuilder(builder: (Widget child, TransformInfo info) {
           //  print('==========');
@@ -78,13 +76,11 @@ class Welcome extends StatelessWidget {
                 Expanded(
                     child: ParallaxContainer(
                   position: info.position!,
-                  opacityFactor: 1.0,
                   translationFactor: 400.0,
                   child: Image.asset(images[info.index!]),
-                )),
+                ),),
                 ParallaxContainer(
                   position: info.position!,
-                  translationFactor: 100.0,
                   child: Text(
                     titles[info.index!],
                     style: const TextStyle(fontSize: 30.0, color: Colors.white),
@@ -100,13 +96,13 @@ class Welcome extends StatelessWidget {
                       child: Text(subtitles[info.index!],
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                              fontSize: 13.0, color: Colors.white))),
+                              fontSize: 13.0, color: Colors.white,),),),
                 ),
               ],
             ),
           );
-        }),
-        itemCount: 4);
+        },),
+        itemCount: 4,);
   }
 }
 

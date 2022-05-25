@@ -1,6 +1,5 @@
+import 'package:another_transformer_page_view/src/another_transformer_page_view.dart';
 import 'package:flutter/widgets.dart';
-
-import 'another_transformer_page_view.dart';
 
 typedef PaintCallback = void Function(Canvas canvas, Size siz);
 
@@ -13,7 +12,7 @@ class ColorPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    var index = info.fromIndex!;
+    final index = info.fromIndex!;
     _paint.color = colors[index];
     canvas.drawRect(Rect.fromLTWH(0.0, 0.0, size.width, size.height), _paint);
     if (info.done!) {
@@ -22,13 +21,13 @@ class ColorPainter extends CustomPainter {
     int alpha;
     int color;
     double opacity;
-    var position = info.position;
+    final position = info.position;
     if (info.forward!) {
       if (index < colors.length - 1) {
         color = colors[index + 1].value & 0x00ffffff;
-        opacity = (position! <= 0
+        opacity = position! <= 0
             ? (-position / info.viewportFraction!)
-            : 1 - position / info.viewportFraction!);
+            : 1 - position / info.viewportFraction!;
         if (opacity > 1) {
           opacity -= 1.0;
         }
@@ -39,14 +38,14 @@ class ColorPainter extends CustomPainter {
 
         _paint.color = Color((alpha << 24) | color);
         canvas.drawRect(
-            Rect.fromLTWH(0.0, 0.0, size.width, size.height), _paint);
+            Rect.fromLTWH(0.0, 0.0, size.width, size.height), _paint,);
       }
     } else {
       if (index > 0) {
         color = colors[index - 1].value & 0x00ffffff;
-        opacity = (position! > 0
+        opacity = position! > 0
             ? position / info.viewportFraction!
-            : (1 + position / info.viewportFraction!));
+            : (1 + position / info.viewportFraction!);
         if (opacity > 1) {
           opacity -= 1.0;
         }
@@ -57,7 +56,7 @@ class ColorPainter extends CustomPainter {
 
         _paint.color = Color((alpha << 24) | color);
         canvas.drawRect(
-            Rect.fromLTWH(0.0, 0.0, size.width, size.height), _paint);
+            Rect.fromLTWH(0.0, 0.0, size.width, size.height), _paint,);
       }
     }
   }
@@ -111,7 +110,7 @@ class ParallaxContainer extends StatelessWidget {
       required this.child,
       required this.position,
       this.translationFactor = 100.0,
-      this.opacityFactor = 1.0})
+      this.opacityFactor = 1.0,})
       : super(key: key);
 
   @override
@@ -131,13 +130,13 @@ class ParallaxImage extends StatelessWidget {
   final double imageFactor;
 
   ParallaxImage.asset(String name,
-      {Key? key, required double position, this.imageFactor = 0.3})
+      {Key? key, required double position, this.imageFactor = 0.3,})
       : image = Image.asset(name,
             fit: BoxFit.cover,
             alignment: FractionalOffset(
               0.5 + position * imageFactor,
               0.5,
-            )),
+            ),),
         super(key: key);
 
   @override
