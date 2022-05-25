@@ -1,3 +1,11 @@
+## 2.0.0
+This version is now compatible with Flutter 3.
+
+Other changes:
+* Updated linter to lint
+* Fixed null pointer
+* Dependency updates and other minor improvements
+
 ## 1.1.0
 - Upgraded example app to null-safety
 - Upgraded deprecated pedantic to flutter_lints
