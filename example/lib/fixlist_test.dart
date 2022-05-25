@@ -1,8 +1,7 @@
+import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:example/buildin_transformers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 
 void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
@@ -112,33 +111,36 @@ class _MyHomePageState extends State<MyHomePage> {
               ElevatedButton(
                 onPressed: () {
                   showModalBottomSheet(
-                      context: context,
-                      builder: (_) {
-                        return CupertinoPicker(
-                            scrollController: controller,
-                            itemExtent: 30.0,
-                            onSelectedItemChanged: (int index) {
-                              setState(() {
-                                controller = FixedExtentScrollController(
-                                    initialItem: index);
-                                _type = _types[index];
-                                if (_type == 'ScaleAndFadeTransformer') {
-                                  _viewportFraction = 0.8;
-                                } else {
-                                  _viewportFraction = 1.0;
-                                }
-                              });
-                            },
-                            children: _types.map((t) => Text(t)).toList());
-                      });
+                    context: context,
+                    builder: (_) {
+                      return CupertinoPicker(
+                        scrollController: controller,
+                        itemExtent: 30.0,
+                        onSelectedItemChanged: (int index) {
+                          setState(() {
+                            controller = FixedExtentScrollController(
+                              initialItem: index,
+                            );
+                            _type = _types[index];
+                            if (_type == 'ScaleAndFadeTransformer') {
+                              _viewportFraction = 0.8;
+                            } else {
+                              _viewportFraction = 1.0;
+                            }
+                          });
+                        },
+                        children: _types.map((t) => Text(t)).toList(),
+                      );
+                    },
+                  );
                 },
                 child: const Text('Change Animation'),
               ),
             ],
           ),
           Expanded(
-              child: SizedBox(
-            child: TransformerPageView(
+            child: SizedBox(
+              child: TransformerPageView(
                 loop: true,
                 viewportFraction: _viewportFraction,
                 controller: _controller,
@@ -149,8 +151,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     fit: BoxFit.fill,
                   );
                 },
-                itemCount: 3),
-          ))
+                itemCount: 3,
+              ),
+            ),
+          )
         ],
       ),
     );

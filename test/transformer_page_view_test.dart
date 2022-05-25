@@ -1,42 +1,55 @@
+import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 
 void main() {
   testWidgets('TransformerPageView basic usage', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(
+      MaterialApp(
         home: TransformerPageView(
-            itemBuilder: (context, index) {
-              return const Text('0');
-            },
-            itemCount: 10)));
+          itemBuilder: (context, index) {
+            return const Text('0');
+          },
+          itemCount: 10,
+        ),
+      ),
+    );
 
     expect(find.text('0', skipOffstage: false), findsOneWidget);
   });
   testWidgets('Zero item count ', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(
+      MaterialApp(
         home: TransformerPageView(
-            transformer: PageTransformerBuilder(
-                builder: (Widget child, TransformInfo info) {
+          transformer: PageTransformerBuilder(
+            builder: (Widget child, TransformInfo info) {
               return const Text('0');
-            }),
-            itemCount: 0)));
+            },
+          ),
+          itemCount: 0,
+        ),
+      ),
+    );
 
     expect(find.text('0', skipOffstage: false), findsNothing);
   });
   testWidgets('TransformerPageView transformer only',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(
+      MaterialApp(
         home: TransformerPageView(
-            transformer: PageTransformerBuilder(
-                builder: (Widget child, TransformInfo info) {
+          transformer: PageTransformerBuilder(
+            builder: (Widget child, TransformInfo info) {
               return const Text('0');
-            }),
-            itemCount: 10)));
+            },
+          ),
+          itemCount: 10,
+        ),
+      ),
+    );
 
     // expect(find.text("0", skipOffstage: false), findsOneWidget);
   });
@@ -121,17 +134,21 @@ void main() {
 //
   testWidgets('TransformerPageView controller', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    var controller = IndexController();
+    final controller = IndexController();
 
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(
+      MaterialApp(
         home: TransformerPageView(
-            controller: controller,
-            transformer: FackTransformer(),
-            itemBuilder: (context, index) {
-              debugPrint('===================build:$index');
-              return Text('$index');
-            },
-            itemCount: 10)));
+          controller: controller,
+          transformer: FackTransformer(),
+          itemBuilder: (context, index) {
+            debugPrint('===================build:$index');
+            return Text('$index');
+          },
+          itemCount: 10,
+        ),
+      ),
+    );
 
     expect(find.text('0'), findsOneWidget);
     await controller.next(animation: false);

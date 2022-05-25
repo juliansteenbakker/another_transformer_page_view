@@ -1,7 +1,6 @@
+import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:example/screens/product_detail_view.dart';
 import 'package:flutter/material.dart';
-
-import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 
 class ProductListView extends StatefulWidget {
   const ProductListView({Key? key}) : super(key: key);
@@ -26,15 +25,22 @@ class ProductListViewState extends State<ProductListView> {
             child: TransformerPageView(
               viewportFraction: 0.8,
               itemCount: 10,
-              transformer: PageTransformerBuilder(builder: (w, i) {
-                return w;
-              }),
+              transformer: PageTransformerBuilder(
+                builder: (w, i) {
+                  return w;
+                },
+              ),
               itemBuilder: (c, i) {
                 return InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (c) {
-                      return const ProductDetailView();
-                    }));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) {
+                          return const ProductDetailView();
+                        },
+                      ),
+                    );
                   },
                   child: Container(
                     color: Colors.black26,

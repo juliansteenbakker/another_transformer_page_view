@@ -1,3 +1,6 @@
+import 'dart:math' as math;
+
+import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:example/buildin_transformers.dart';
 import 'package:example/images.dart';
 import 'package:example/screens/product_list_view.dart';
@@ -5,10 +8,6 @@ import 'package:example/welcome.dart';
 import 'package:example/zero.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:another_transformer_page_view/another_transformer_page_view.dart';
-
-import 'dart:math' as math;
 
 void main() => runApp(const MyApp());
 List<Color> list = [Colors.yellow, Colors.green, Colors.blue];
@@ -95,9 +94,14 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (c) {
-                return const ProductListView();
-              }));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (c) {
+                    return const ProductListView();
+                  },
+                ),
+              );
             },
             child: const Text('route'),
           )
@@ -115,34 +119,47 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (b) {
-                    return Scaffold(
-                      appBar: AppBar(
-                        title: const Text('images'),
-                      ),
-                      body: const ImageTest(),
-                    );
-                  }));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (b) {
+                        return Scaffold(
+                          appBar: AppBar(
+                            title: const Text('images'),
+                          ),
+                          body: const ImageTest(),
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: const Text('Image'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (b) {
-                    return Scaffold(
-                        appBar: AppBar(
-                          title: const Text('welcome'),
-                        ),
-                        body: Welcome(0));
-                  }));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (b) {
+                        return Scaffold(
+                          appBar: AppBar(
+                            title: const Text('welcome'),
+                          ),
+                          body: Welcome(0),
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: const Text('Welcome'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (b) {
-                    return const Zero();
-                  }));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (b) {
+                        return const Zero();
+                      },
+                    ),
+                  );
                 },
                 child: const Text('Zero'),
               ),
@@ -171,34 +188,36 @@ class _MyHomePageState extends State<MyHomePage> {
               ElevatedButton(
                 onPressed: () {
                   showModalBottomSheet(
-                      context: context,
-                      builder: (_) {
-                        return CupertinoPicker(
-                            scrollController: controller,
-                            itemExtent: 30.0,
-                            onSelectedItemChanged: (int index) {
-                              setState(() {
-                                controller = FixedExtentScrollController(
-                                    initialItem: index);
-                                _type = _types[index];
-                                if (_type == 'ScaleAndFadeTransformer') {
-                                  _viewportFraction = 0.8;
-                                } else {
-                                  _viewportFraction = 1.0;
-                                }
-                              });
-                            },
-                            children: _types.map((t) => Text(t)).toList());
-                      });
+                    context: context,
+                    builder: (_) {
+                      return CupertinoPicker(
+                        scrollController: controller,
+                        itemExtent: 30.0,
+                        onSelectedItemChanged: (int index) {
+                          setState(() {
+                            controller = FixedExtentScrollController(
+                              initialItem: index,
+                            );
+                            _type = _types[index];
+                            if (_type == 'ScaleAndFadeTransformer') {
+                              _viewportFraction = 0.8;
+                            } else {
+                              _viewportFraction = 1.0;
+                            }
+                          });
+                        },
+                        children: _types.map((t) => Text(t)).toList(),
+                      );
+                    },
+                  );
                 },
                 child: const Text('Animation'),
               ),
             ],
           ),
           Expanded(
-              child: SizedBox(
-            child: TransformerPageView(
-                loop: false,
+            child: SizedBox(
+              child: TransformerPageView(
                 index: _index,
                 viewportFraction: _viewportFraction,
                 controller: _controller,
@@ -214,8 +233,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     fit: BoxFit.fill,
                   );
                 },
-                itemCount: 3),
-          ))
+                itemCount: 3,
+              ),
+            ),
+          )
         ],
       ),
     );
