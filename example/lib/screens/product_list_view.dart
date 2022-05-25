@@ -25,15 +25,22 @@ class ProductListViewState extends State<ProductListView> {
             child: TransformerPageView(
               viewportFraction: 0.8,
               itemCount: 10,
-              transformer: PageTransformerBuilder(builder: (w, i) {
-                return w;
-              },),
+              transformer: PageTransformerBuilder(
+                builder: (w, i) {
+                  return w;
+                },
+              ),
               itemBuilder: (c, i) {
                 return InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (c) {
-                      return const ProductDetailView();
-                    },),);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (c) {
+                          return const ProductDetailView();
+                        },
+                      ),
+                    );
                   },
                   child: Container(
                     color: Colors.black26,

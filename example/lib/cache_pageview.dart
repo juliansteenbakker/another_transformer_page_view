@@ -6,17 +6,18 @@ import 'package:flutter/widgets.dart';
 class MyViewPort extends RenderSliverFillViewport {
   int? itemCount;
 
-  MyViewPort(
-      {required RenderSliverBoxChildManager childManager,
-      double viewportFraction = 1.0,
-      this.itemCount,})
-      : super(childManager: childManager, viewportFraction: viewportFraction);
+  MyViewPort({
+    required RenderSliverBoxChildManager childManager,
+    double viewportFraction = 1.0,
+    this.itemCount,
+  }) : super(childManager: childManager, viewportFraction: viewportFraction);
 
   @override
   int getMaxChildIndexForScrollOffset(double scrollOffset, double itemExtent) {
     return min(
-        super.getMaxChildIndexForScrollOffset(scrollOffset, itemExtent) + 2,
-        itemCount! - 1,);
+      super.getMaxChildIndexForScrollOffset(scrollOffset, itemExtent) + 2,
+      itemCount! - 1,
+    );
   }
 
   @override
@@ -30,12 +31,12 @@ class MyViewPort extends RenderSliverFillViewport {
 class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
   /// Creates a sliver whose box children that each fill the viewport.
   //
-  const MySliverFillViewport(
-      {Key? key,
-      required SliverChildDelegate delegate,
-      this.viewportFraction = 1.0,
-      this.itemCount,})
-      : assert(viewportFraction > 0.0),
+  const MySliverFillViewport({
+    Key? key,
+    required SliverChildDelegate delegate,
+    this.viewportFraction = 1.0,
+    this.itemCount,
+  })  : assert(viewportFraction > 0.0),
         super(key: key, delegate: delegate);
 
   /// The fraction of the viewport that each child should fill in the main axis.
@@ -52,9 +53,10 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
     final SliverMultiBoxAdaptorElement element =
         context as SliverMultiBoxAdaptorElement;
     return MyViewPort(
-        childManager: element,
-        itemCount: itemCount,
-        viewportFraction: viewportFraction,);
+      childManager: element,
+      itemCount: itemCount,
+      viewportFraction: viewportFraction,
+    );
   }
 
   @override
@@ -64,7 +66,9 @@ class MySliverFillViewport extends SliverMultiBoxAdaptorWidget {
 
   @override
   void updateRenderObject(
-      BuildContext context, RenderSliverFillViewport renderObject,) {
+    BuildContext context,
+    RenderSliverFillViewport renderObject,
+  ) {
     renderObject.viewportFraction = viewportFraction;
   }
 }
@@ -97,8 +101,9 @@ class MyPageView extends StatelessWidget {
           offset: position,
           slivers: <Widget>[
             MySliverFillViewport(
-                itemCount: 10,
-                delegate: childrenDelegate,),
+              itemCount: 10,
+              delegate: childrenDelegate,
+            ),
           ],
         );
       },

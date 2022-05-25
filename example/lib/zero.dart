@@ -7,14 +7,15 @@ class Zero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Zero'),
-        ),
-        body: TransformerPageView(
-          itemCount: 0,
-          itemBuilder: (c, i) {
-            return Text('$i');
-          },
-        ),);
+      appBar: AppBar(
+        title: const Text('Zero'),
+      ),
+      body: TransformerPageView(
+        itemCount: 0,
+        itemBuilder: (c, i) {
+          return Text('$i');
+        },
+      ),
+    );
   }
 }

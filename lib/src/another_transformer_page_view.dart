@@ -365,7 +365,7 @@ class TransformerPageView extends StatefulWidget {
 class _TransformerPageViewState extends State<TransformerPageView> {
   Size? _size;
   late int _activeIndex;
-  late double _currentPixels;
+  // late double _currentPixels;
   bool _done = false;
 
   ///This value will not change until user end drag.
@@ -414,7 +414,7 @@ class _TransformerPageViewState extends State<TransformerPageView> {
           activeIndex:
               _pageController!.getRenderIndexFromRealIndex(_activeIndex),
           fromIndex: _fromIndex,
-          forward: _pageController!.position.pixels - _currentPixels >= 0,
+          forward: _pageController!.position.pixels >= 0,
           done: _done,
           scrollDirection: widget.scrollDirection,
           viewportFraction: widget.viewportFraction,

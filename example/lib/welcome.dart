@@ -64,9 +64,9 @@ class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TransformerPageView(
-        index: index,
-        transformer:
-            PageTransformerBuilder(builder: (Widget child, TransformInfo info) {
+      index: index,
+      transformer: PageTransformerBuilder(
+        builder: (Widget child, TransformInfo info) {
           //  print('==========');
           return ParallaxColor(
             colors: backgroundColors,
@@ -74,11 +74,12 @@ class Welcome extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Expanded(
-                    child: ParallaxContainer(
-                  position: info.position!,
-                  translationFactor: 400.0,
-                  child: Image.asset(images[info.index!]),
-                ),),
+                  child: ParallaxContainer(
+                    position: info.position!,
+                    translationFactor: 400.0,
+                    child: Image.asset(images[info.index!]),
+                  ),
+                ),
                 ParallaxContainer(
                   position: info.position!,
                   child: Text(
@@ -91,18 +92,24 @@ class Welcome extends StatelessWidget {
                   position: info.position!,
                   translationFactor: 50.0,
                   child: Padding(
-                      padding:
-                          const EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 50.0),
-                      child: Text(subtitles[info.index!],
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              fontSize: 13.0, color: Colors.white,),),),
+                    padding: const EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 50.0),
+                    child: Text(
+                      subtitles[info.index!],
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 13.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
           );
-        },),
-        itemCount: 4,);
+        },
+      ),
+      itemCount: 4,
+    );
   }
 }
 

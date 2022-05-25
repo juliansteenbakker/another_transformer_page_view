@@ -41,22 +41,27 @@ class TestWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final list = <Color>[Colors.redAccent, Colors.blueAccent, Colors.greenAccent];
+    final list = <Color>[
+      Colors.redAccent,
+      Colors.blueAccent,
+      Colors.greenAccent
+    ];
     return TransformerPageView(
-        loop: true,
-        transformer: ZoomInPageTransformer(),
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            color: list[index % list.length],
-            child: Center(
-              child: Text(
-                '$index',
-                style: const TextStyle(fontSize: 80.0, color: Colors.white),
-              ),
+      loop: true,
+      transformer: ZoomInPageTransformer(),
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          color: list[index % list.length],
+          child: Center(
+            child: Text(
+              '$index',
+              style: const TextStyle(fontSize: 80.0, color: Colors.white),
             ),
-          );
-        },
-        itemCount: 3,);
+          ),
+        );
+      },
+      itemCount: 3,
+    );
   }
 }
 

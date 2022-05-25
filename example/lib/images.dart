@@ -40,10 +40,10 @@ class ImageTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TransformerPageView(
-        loop: true,
-        viewportFraction: 0.8,
-        transformer:
-            PageTransformerBuilder(builder: (Widget child, TransformInfo info) {
+      loop: true,
+      viewportFraction: 0.8,
+      transformer: PageTransformerBuilder(
+        builder: (Widget child, TransformInfo info) {
           return Padding(
             padding: const EdgeInsets.all(10.0),
             child: Material(
@@ -91,8 +91,10 @@ class ImageTest extends StatelessWidget {
                         ParallaxContainer(
                           position: info.position!,
                           translationFactor: 200.0,
-                          child: Text(text1[info.index!],
-                              style: const TextStyle(fontSize: 18.0),),
+                          child: Text(
+                            text1[info.index!],
+                            style: const TextStyle(fontSize: 18.0),
+                          ),
                         ),
                       ],
                     ),
@@ -101,8 +103,10 @@ class ImageTest extends StatelessWidget {
               ),
             ),
           );
-        },),
-        itemCount: 3,);
+        },
+      ),
+      itemCount: 3,
+    );
   }
 }
 
@@ -111,8 +115,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Padding(
-          padding: EdgeInsets.fromLTRB(10.0, 40.0, 10.0, 30.0),
-          child: ImageTest(),),
+        padding: EdgeInsets.fromLTRB(10.0, 40.0, 10.0, 30.0),
+        child: ImageTest(),
+      ),
     );
   }
 }
