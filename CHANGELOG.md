@@ -1,3 +1,6 @@
+## 2.0.1
+Updated dependencies & applied latest lint hints.
+
 ## 2.0.0
 This version is now compatible with Flutter 3.
 
