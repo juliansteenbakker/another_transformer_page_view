@@ -138,7 +138,7 @@ class ParallaxImage extends StatelessWidget {
     super.key,
     required double position,
     this.imageFactor = 0.3,
-  })  : image = Image.asset(
+  }) : image = Image.asset(
           name,
           fit: BoxFit.cover,
           alignment: FractionalOffset(
