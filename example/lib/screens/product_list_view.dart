@@ -42,7 +42,7 @@ class ProductListViewState extends State<ProductListView> {
                       ),
                     );
                   },
-                  child: Container(
+                  child: ColoredBox(
                     color: Colors.black26,
                     child: Text('$i'),
                   ),

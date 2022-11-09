@@ -88,8 +88,7 @@ typedef PageTransformerBuilderCallback = Widget Function(
 class PageTransformerBuilder extends PageTransformer {
   final PageTransformerBuilderCallback builder;
 
-  PageTransformerBuilder({bool reverse = false, required this.builder})
-      : super(reverse: reverse);
+  PageTransformerBuilder({super.reverse, required this.builder});
 
   @override
   Widget transform(Widget child, TransformInfo info) {
@@ -104,8 +103,8 @@ class TransformerPageController extends PageController {
 
   TransformerPageController({
     int? initialPage = 0,
-    bool keepPage = true,
-    double viewportFraction = 1.0,
+    super.keepPage,
+    super.viewportFraction,
     this.loop = false,
     this.itemCount,
     this.reverse = false,
@@ -116,8 +115,6 @@ class TransformerPageController extends PageController {
             itemCount,
             reverse,
           )!,
-          keepPage: keepPage,
-          viewportFraction: viewportFraction,
         );
 
   int? getRenderIndexFromRealIndex(int index) {
@@ -270,7 +267,7 @@ class TransformerPageView extends StatefulWidget {
   /// [itemBuilder] will be called only with indices greater than or equal to
   /// zero and less than [itemCount].
   const TransformerPageView({
-    Key? key,
+    super.key,
     this.index,
     Duration? duration,
     this.curve = Curves.ease,
@@ -287,8 +284,7 @@ class TransformerPageView extends StatefulWidget {
     required this.itemCount,
   })  : assert(itemCount == 0 || itemBuilder != null || transformer != null),
         duration = duration ??
-            const Duration(milliseconds: kDefaultTransactionDuration),
-        super(key: key);
+            const Duration(milliseconds: kDefaultTransactionDuration);
 
   factory TransformerPageView.children({
     Key? key,

@@ -50,7 +50,7 @@ class TestWidget extends StatelessWidget {
       loop: true,
       transformer: ZoomOutPageTransformer(),
       itemBuilder: (BuildContext context, int index) {
-        return Container(
+        return ColoredBox(
           color: list[index % list.length],
           child: Center(
             child: Text(
