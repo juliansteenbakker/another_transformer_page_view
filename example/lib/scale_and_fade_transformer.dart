@@ -51,7 +51,7 @@ class TestWidget extends StatelessWidget {
       transformer: ScaleAndFadeTransformer(),
       viewportFraction: 0.8,
       itemBuilder: (BuildContext context, int index) {
-        return Container(
+        return ColoredBox(
           color: list[index % list.length],
           child: Center(
             child: Text(
